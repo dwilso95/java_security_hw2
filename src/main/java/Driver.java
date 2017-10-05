@@ -21,8 +21,10 @@ public class Driver {
 
         switch (command) {
             case "1":
-                String option1 = args[1];
-                if (option1 == null || option1.isEmpty()) {
+                final String option1;
+                if (args.length > 1) {
+                    option1 = args[1];
+                } else {
                     option1 = "classLoadDir";
                 }
                 runPart1(option1);
@@ -62,7 +64,7 @@ public class Driver {
         System.out.println("Object 1 [" + o1.hashCode() + "] an instance of class TestClass [" + class1.hashCode() + "]");
         System.out.println("Object 2 [" + o2.hashCode() + "] an instance of class TestClass [" + class2.hashCode() + "]");
 
-        System.out.println("Comapring TestClass objects 1 & 2");
+        System.out.println("Comparing TestClass objects 1 & 2");
         if (o1.equals(o2)) {
             System.out.println("Objects are equal");
         } else {
