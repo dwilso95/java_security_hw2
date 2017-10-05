@@ -76,13 +76,17 @@ public class Driver {
         System.out.println("----- Homework 2 - Part 2 -----");
 
         System.out.println("----- Part 2 - Test Case 1 -----");
-        Part2 part2_1 = new Part2(5);
-        Part2 part2_2 = new Part2(6);
+        Part2 part2_1 = new Part2(5, 10);
+        Part2 part2_2 = new Part2(6, 20);
 
-        System.out.println("Instance of Part2 constructed with internal value 5");
-        System.out.println("Instance of Part2 constructed with internal value 6");
-        System.out.println("Calling protected method, #addPart2(Part2) using the two instances returns: " + part2_1.addTestCase1(part2_2));
-
+        System.out.println("Instance of Part2 constructed with internal value 5 and protected value 10");
+        System.out.println("Instance of Part2 constructed with internal value 6 and protected value 20");
+        System.out.println("Calling protected method, #addPart2(Part2) using the two instances returned: " + part2_1.addPart2(part2_2));
+        System.out.println("Calling protected method, #accessProtectedField(Part2) using the two instances.");
+        part2_1.accessProtectedField(part2_2);
+        System.out.println("Access protected method directly from Driver on first instance returns " + part2_1.getProtectedValue());
+        System.out.println("Access protected field directly from Driver on first instance returns " + part2_1.protectValue);
+        
         System.out.println("\n----- Part 2 - Test Case 2 -----");
         System.out.println("Instance of Part2 constructed with internal value 5");
         System.out.println("Instance of Part2 constructed with internal value 6");

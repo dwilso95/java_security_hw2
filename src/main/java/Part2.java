@@ -5,14 +5,7 @@
 public class Part2 {
 
     private int internalValue;
-    private int protectValue;
-
-    /**
-     * Constructor to set internalValue
-     */
-    public Part2(final int internalValue) {
-        this.internalValue = internalValue;
-    }
+    protected int protectValue;
 
     /**
      * Construcotr for setting both internalValue and protectedValue
@@ -22,8 +15,12 @@ public class Part2 {
         this.protectValue = protectedValue;
     }
 
-    public int addTestCase1(final Part2 part2) {
+    public int addPart2(final Part2 part2) {
         return this.internalValue += part2.getInternalValue();
+    }
+
+    public void accessProtectedField(final Part2 part2) {
+        System.out.println("\tAccessing other Part2's protected value " + part2.protectValue);
     }
 
     public void callPrivateMethod(final Part2 part2) {
