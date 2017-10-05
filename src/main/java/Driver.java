@@ -1,13 +1,20 @@
 import java.io.File;
-import java.lang.reflect.Method;
 import java.lang.reflect.Field;
 
+/**
+ * Main class for executing homework 2 parts.
+ * 
+ * First argument can be either '1' or '2'. '1' supports a second argument 
+ * to dictate a directory from which to load classes.
+ */
 public class Driver {
 
     public static void main(String[] args) throws Exception {
 
         if (args.length == 0) {
-            System.out.println("No arguments provided. Please enter a command.");
+            System.out.println("No arguments provided. Please enter at least one argument, '1' or '2'.");
+        } else if (args.length > 2) {
+            System.out.println("Too many arguments provided. Please enter at least one argument, '1' or '2'.");
         }
 
         final String command = args[0];
@@ -22,9 +29,6 @@ public class Driver {
                 break;
             case "2":
                 runPart2();
-                break;
-            case "3":
-                // runPart3;
                 break;
             default:
                 System.out.println("Command entered is not supported: " + command);
@@ -43,13 +47,6 @@ public class Driver {
             testClassLoaders(cl1, cl2);
         }
     }
-
-    /*
-     * Classloaders in java help prevent attackers from injecting class implementations into java.lang in place of existing classes.
-     * Through namespaces, they also prevent bad classes from being injected into other packages. Availability wise, Java's classloaders enable dynamic class upgrades. This means no-outage or JVM downtime is necessarily required for updating a specific class.
-     * 
-     * https://www.javaworld.com/article/2077009/core-java/security-and-the-class-loader-architecture.html?page=2
-     */
 
     private static void testClassLoaders(ClassLoader cl1, ClassLoader cl2) throws Exception {
         final Class< ? > class1 = cl1.loadClass("TestClass");
@@ -111,15 +108,6 @@ public class Driver {
         System.out.println("\n----- Part 2 - Test Case 3 (cont.)-----");
         AccessControlViolator.main(new String[]{});
 
-        //  Method privateMethod = part2_1.getClass().getMethod("privateMethod");
-        // privateMethod.setAccessible(true);
-        //  privateMethod.invoke(part2_1);
-        // System.out.println("Direclty invoking private method of Part2 using reflection");
-
-    }
-    
-    private static void part3(){
-        
     }
 
 }
